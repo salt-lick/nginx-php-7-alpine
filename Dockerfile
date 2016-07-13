@@ -149,7 +149,7 @@ RUN export PHP_ACTIONS_VER="master" && \
 
     # Install Wellington tool
     wget -qO- https://s3.amazonaws.com/wodby-releases/wt/1.0.2/wt_v1.0.2_linux_amd64.tar.gz | tar xz -C /tmp/ && \
-    cp /tmp/wt /opt/wodby/bin
+    cp /tmp/wt /opt/wodby/bin && \
 
     # Install go-aws-s3
     wget -qO- https://s3.amazonaws.com/wodby-releases/go-aws-s3/${GO_AWS_S3_VER}/go-aws-s3.tar.gz | tar xz -C /tmp/ && \
