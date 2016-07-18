@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Disable outdated extension dir.
+sed -i "s/^extension_dir = \"\/usr\/lib\/php\/modules\"/; extension_dir = \"\/usr\/lib\/php\/modules\"/" /etc/php7/php.ini
