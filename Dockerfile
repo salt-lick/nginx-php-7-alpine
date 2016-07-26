@@ -1,4 +1,4 @@
-FROM wodby/nginx-alpine:v1.1.0
+FROM wodby/nginx-alpine:v1.2.1
 MAINTAINER Wodby <hello@wodby.com>
 
 RUN export PHP_ACTIONS_VER="master" && \
