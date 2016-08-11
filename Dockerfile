@@ -25,7 +25,6 @@ RUN export PHP_ACTIONS_VER="master" && \
         patch \
         patchutils \
         diffutils \
-        postfix \
         && \
 
     # Add PHP actions
@@ -92,6 +91,7 @@ RUN export PHP_ACTIONS_VER="master" && \
         -e "s/^max_execution_time.*/max_execution_time = 300/" \
         -e "s/^post_max_size.*/post_max_size = 512M/" \
         -e "s/^upload_max_filesize.*/upload_max_filesize = 512M/" \
+        -e "s@^;sendmail_path.*@sendmail_path = /usr/sbin/sendmail -t -i -S mta:25@" \
         /etc/php7/php.ini && \
 
     echo "error_log = \"/var/log/php/error.log\"" | tee -a /etc/php7/php.ini && \
