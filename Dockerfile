@@ -22,6 +22,7 @@ RUN export PHP_ACTIONS_VER="master" && \
         pcre \
         perl \
         openssh \
+        vim \
         patch \
         patchutils \
         diffutils \
@@ -126,7 +127,7 @@ RUN export PHP_ACTIONS_VER="master" && \
 
     # Define Git global config
     git config --global user.name "Administrator" && \
-    git config --global user.email "admin@wodby.com" && \
+    git config --global user.email "nope@nobody.com" && \
     git config --global push.default current && \
 
     # Install composer
@@ -134,29 +135,6 @@ RUN export PHP_ACTIONS_VER="master" && \
 
     # Add composer parallel install plugin
     composer global require "hirak/prestissimo:^0.3" && \
-
-    # Install drush
-    git clone https://github.com/drush-ops/drush.git /usr/local/src/drush && \
-    cd /usr/local/src/drush && \
-    ln -sf /usr/local/src/drush/drush /usr/bin/drush && \
-    composer install && rm -rf ./.git && \
-
-    # Install wp-cli
-    composer create-project wp-cli/wp-cli /usr/local/src/wp-cli --no-dev && \
-    ln -sf /usr/local/src/wp-cli/bin/wp /usr/bin/wp && \
-
-    # Install Walter tool
-    wget -qO- https://s3.amazonaws.com/wodby-releases/walter-cd/v${WALTER_VER}/walter.tar.gz | tar xz -C /tmp/ && \
-    mkdir -p /opt/wodby/bin && \
-    cp /tmp/walter_linux_amd64/walter /opt/wodby/bin && \
-
-    # Install Wellington tool
-    wget -qO- https://s3.amazonaws.com/wodby-releases/wt/1.0.2/wt_v1.0.2_linux_amd64.tar.gz | tar xz -C /tmp/ && \
-    cp /tmp/wt /opt/wodby/bin && \
-
-    # Install go-aws-s3
-    wget -qO- https://s3.amazonaws.com/wodby-releases/go-aws-s3/${GO_AWS_S3_VER}/go-aws-s3.tar.gz | tar xz -C /tmp/ && \
-    cp /tmp/go-aws-s3 /opt/wodby/bin && \
 
     # Fix permissions
     chmod 755 /root && \
